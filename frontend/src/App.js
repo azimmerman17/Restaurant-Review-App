@@ -5,6 +5,10 @@ function App() {
   return (
     <div className="App"> 
       Restaurant App    
+      {/* Navbar */}
+      {/* Router */}
+      {/* Routes with views */}
+
     </div>
   );
 }
