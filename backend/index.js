@@ -6,12 +6,13 @@ const mongoose = require('mongoose')
 const app = express()
 
 // middleware
+app.set('view engine', 'jsx')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(methodOveride('_method'))
+// app.use(methodOveride('_method'))
 
 // controllers and routes
-const placesRoutes = require('./controllers/restaurants')
+const placesRoutes = require('./controllers/places.js')
 app.use('/places', placesRoutes)
 
 // Mongo Connection

@@ -1,16 +1,16 @@
 const router = require('express').Router()
 
 //connection to models
-const Restaurants = require('../models/restaurants')
-const Comments = require('../models/comment')
+const Places = require('../models/places')
+const Comments = require('../models/comments')
 
 
 // GET
-// Get All Restaurants
+// Get All Places
 router.get('/', async (req,res) => {
-  let restaurants = await Restaurants.find()
+  let places = await Places.find()
   try {
-    res.status(200).send(restaurants)
+    res.status(200).send(places)
   } catch (error) {
     console.log(error)
 
@@ -23,13 +23,13 @@ router.get('/new', (req,res) => {
 
 })
 
-// Get Restaurant by ID
+// Get Place by ID
 router.get('/:id', async (req,res) => {
   const { id } = req.params
-  let restaurant = await Restaurants.findById(id)
+  let place = await Places.findById(id)
   .populate('comments')
   try {
-      res.status(200).send(restaurant)
+      res.status(200).send(place)
   } catch (error) {
     console.log(error)
   }
@@ -38,26 +38,26 @@ router.get('/:id', async (req,res) => {
 //Get Edit Restaurent
 router.get(':id/edit', async (req, res) => {
   const { id } = req.params
-  let restaurant = await Restaurants.findById(id)
+  let place = await Places.findById(id)
   try {
-    res.status(200).send(restaurant)
+    res.status(200).send(place)
   } catch (error) {
     console.log(error)
   }
 })
 
 // POST
-// Create new restaurant
+// Create new place
 router.post('/', (req,res) => {
   const { pic, city, state } = req.body
   // not required pic, city, state
-  if (!pic) pic = undefined
-  if (!state) state = undefined
-  if (!city) city = undefined
+  if (!pic) req.body.pic = undefined
+  if (!state) req.body.state = undefined
+  if (!city) req.body.city = undefined
 
   try {
     Places.create(req.body)
-    res.redirect('/')
+    res.send('Success')
   } catch (error) {
     console.log(error)
   }
@@ -68,13 +68,13 @@ router.post(':id/comment', async (req, res)=> {
   const { id } = req.params
   const { author, rant, content } = req.body
   // not required author, content
-  if (!author) author = undefined
-  if (!content) content = undefined
-  rant === 'on' ? rant = true : rant = false
-  let restaurant = await Restaurants.findByID(id)
-  .then(restaurant => {
-    restaurant.comments.push(comment.id)
-    restaurant.save()
+  if (!author) req.body.author = undefined
+  if (!content) req.body.content = undefined
+  rant === 'on' ? req.bodyrant = true : req.bodyrant = false
+  let place = await Places.findByID(id)
+  .then(place => {
+    place.comments.push(comment.id)
+    place.save()
     .then(() => {
       res.redirect(`/places/${id}`)
     })
@@ -106,7 +106,7 @@ router.put('/:id', async (req, res) => {
 
 
 // DELETE 
-// Delete restaurant
+// Delete place
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
   await Places.findByIdAndDelete(id)
@@ -129,3 +129,5 @@ router.delete('/:placeId/comment/:id', async (req, res) => {
     console.log('error', error)
   })
 })
+
+module.exports = router
