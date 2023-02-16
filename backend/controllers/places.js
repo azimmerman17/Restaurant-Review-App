@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 //connection to models
 const Places = require('../models/places')
-const Comments = require('../models/comments')
+const Comments = require('../models/comment')
 
 
 // GET
@@ -36,7 +36,7 @@ router.get('/:id', async (req,res) => {
 })
 
 //Get Edit Restaurent
-router.get(':id/edit', async (req, res) => {
+router.get('/:id/edit', async (req, res) => {
   const { id } = req.params
   let place = await Places.findById(id)
   try {
@@ -47,7 +47,7 @@ router.get(':id/edit', async (req, res) => {
 })
 
 // POST
-// Create new place
+// Create new place Good!
 router.post('/', (req,res) => {
   const { pic, city, state } = req.body
   // not required pic, city, state
@@ -64,29 +64,35 @@ router.post('/', (req,res) => {
 })
 
 // Create new comment
-router.post(':id/comment', async (req, res)=> {
+router.post('/:id/comment', async (req, res)=> {
   const { id } = req.params
   const { author, rant, content } = req.body
   // not required author, content
   if (!author) req.body.author = undefined
   if (!content) req.body.content = undefined
-  rant === 'on' ? req.bodyrant = true : req.bodyrant = false
-  let place = await Places.findByID(id)
-  .then(place => {
-    place.comments.push(comment.id)
-    place.save()
-    .then(() => {
-      res.redirect(`/places/${id}`)
+  if (rant === 'on') {
+    req.body.rant = true
+  } else {
+    req.body.rant = false
+  }  
+  try {
+    let place = await Places.findById(id)
+    Comments.create(req.body)
+    .then((comment) => {
+      place.comments.push(comment.id)
+      place.save()
+      .then(() => {
+        // res.redirect(`/places/${id}`)
+        res.send('Success')
+      })
     })
-  })
-.catch(error => {
-  console.log(error)
-})
-
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 // PUT
-// Modify a place
+// Modify a place  Good
 router.put('/:id', async (req, res) => {
   const { id } = req.params
   const { pic, city, state } = req.body
@@ -106,7 +112,7 @@ router.put('/:id', async (req, res) => {
 
 
 // DELETE 
-// Delete place
+// Delete place  Good
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
   await Places.findByIdAndDelete(id)
