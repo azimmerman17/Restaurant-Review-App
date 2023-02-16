@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 //connection to models
 const Restaurants = require('../models/restaurants')
-const Comments = require('../models/comment')
+const Comments = require('../models/comments')
 
 
 // GET
@@ -51,12 +51,12 @@ router.get(':id/edit', async (req, res) => {
 router.post('/', (req,res) => {
   const { pic, city, state } = req.body
   // not required pic, city, state
-  if (!pic) pic = undefined
-  if (!state) state = undefined
-  if (!city) city = undefined
+  if (!pic) req.body.pic = undefined
+  if (!state) req.body.state = undefined
+  if (!city) req.body.city = undefined
 
   try {
-    Places.create(req.body)
+    Restaurants.create(req.body)
     res.redirect('/')
   } catch (error) {
     console.log(error)
@@ -81,6 +81,7 @@ router.post(':id/comment', async (req, res)=> {
   })
 .catch(error => {
   console.log(error)
+
 })
 
 })
@@ -129,3 +130,5 @@ router.delete('/:placeId/comment/:id', async (req, res) => {
     console.log('error', error)
   })
 })
+
+module.exports = router

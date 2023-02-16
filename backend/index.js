@@ -8,11 +8,11 @@ const app = express()
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(methodOveride('_method'))
+//app.use(methodOveride('_method'))
 
 // controllers and routes
-const placesRoutes = require('./controllers/restaurants')
-app.use('/places', placesRoutes)
+const placesRoutes = require('./controllers/restaurants.js')
+app.use('/restaurants', placesRoutes)
 
 // Mongo Connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
