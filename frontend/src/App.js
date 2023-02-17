@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import './App.css';
 import NavBar from './Components/NavBar';
-
+import Home from './Components/Home';
 
 function App() {
   return (
@@ -11,10 +11,10 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main>
+        <main style= {{marginTop: '75px' }}>
       Restaurant App    
           <Routes>
-            {/* <Route exact path='/' element={<Home />} />  */}
+            <Route exact path='/' element={<Home />} /> 
             {/* <Route path='/places' element={<Places />} /> */}
             {/* <Route path 'places/new' element={<PlacesForm />} /> */}
             {/* <Route path='/places/:id' element={<Show />} /> */}
