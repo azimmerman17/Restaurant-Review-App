@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
+import Error404 from './Components/Error404';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
             {/* <Route path 'places/new' element={<PlacesForm />} /> */}
             {/* <Route path='/places/:id' element={<Show />} /> */}
             {/* <Route path='/places/:id/edit' element={<PlacesForm/>} /> */}
-            {/* <Route path='/*' element={<Error404 />} /> */}
+            <Route path='*' element={<Error404 />} />
           </Routes>
 
         </main>
