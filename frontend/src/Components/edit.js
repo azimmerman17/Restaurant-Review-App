@@ -1,7 +1,6 @@
 const React = require('react')
 
 function edit_form ({ data }) {
-    console.log(data)
     return (
           <div>
             <h1>Edit Place</h1>
