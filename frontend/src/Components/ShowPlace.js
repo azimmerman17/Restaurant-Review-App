@@ -79,7 +79,7 @@ const ShowPlace = ({ setLink, data }) => {
               <Button href={`${id}/edit`} className='btn btn-warning'><FaEdit /></Button>
             </Col>
             <Col xs={1}>
-              <Form method='POST' action={`/places/${id}?_method=DELETE`}>
+              <Form method='POST' action={`http://localhost:8080/places/${id}?_method=DELETE`}>
                 <Button type='submit' className='btn btn-danger'><BsTrash /></Button>
               </Form>
             </Col>

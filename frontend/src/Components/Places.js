@@ -13,7 +13,7 @@ const Places = ({ setLink, data }) => {
       const { _id } = place
       return (
         <Col className='m-2 d-flex flex-wrap flex-row p-2' key={_id} sm={5}>
-          <Button className=' p-2 shadow rounded' href={`${_id}`}>
+          <Button className=' p-2 shadow rounded' href={`/places/${_id}`}>
             <PlaceCard place={place} />
           </Button>
         </Col>

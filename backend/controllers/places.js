@@ -32,7 +32,7 @@ router.get('/:id', async (req,res) => {
       res.status(200).send(place)
   } catch (error) {
     console.log(error)
-    res.redirect(`http://localhost:3000/places/Error404`)
+    // res.redirect(`http://localhost:3000/places/Error404`)
   }
 })
 
@@ -59,7 +59,7 @@ router.post('/', (req,res) => {
 
   try {
     Places.create(req.body)
-    res.send('Success')
+    res.redirect(`http://localhost:3000/places`)
   } catch (error) {
     console.log(error)
     res.redirect(`http://localhost:3000/places/Error404`)
@@ -106,7 +106,7 @@ router.put('/:id', async (req, res) => {
 
     await Places.findByIdAndUpdate(id, req.body)
     .then(() => {
-      res.redirect(`/places/${id}`)
+      res.redirect(`http://localhost:3000/places/${id}`)
     })
   .catch((error) => {
     console.log(error)
@@ -122,7 +122,7 @@ router.delete('/:id', async (req, res) => {
   const { id } = req.params
   await Places.findByIdAndDelete(id)
   .then(() => {
-    res.status(303).redirect('/places')
+    res.status(303).redirect('http://localhost:3000/places')
   })
   .catch((error) => {
     console.log(error)
@@ -135,7 +135,7 @@ router.delete('/:placeId/comment/:id', async (req, res) => {
   const { placeId, id } = req.params
   await Comments.findByIdAndDelete(id)
   .then(() => {
-    res.status(303).redirect(`http://localhost:8080/places/${placeId}`)
+    res.status(303).redirect(`http://localhost:3000/places/${placeId}`)
   })
   .catch((error) => {
     console.log('error', error)
