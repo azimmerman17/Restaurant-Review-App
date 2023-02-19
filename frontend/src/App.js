@@ -3,12 +3,9 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
-<<<<<<< HEAD
 import Error404 from './Components/Error404';
-=======
 import Places from './Components/Places';
 import ShowPlace from './Components/ShowPlace';
->>>>>>> 0e676349e874de68186edde2ced549f064753b4c
 
 function App() {
   let [data, setData] = useState({})
