@@ -1,6 +1,6 @@
 const React = require('react')
 
-function edit_page (data) {
+function edit_form (data) {
     return (
         <Def>
           <main>
@@ -41,4 +41,4 @@ function edit_page (data) {
     )
 }
 
-export default edit_page
+export default edit_form
