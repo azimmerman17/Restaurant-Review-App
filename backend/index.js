@@ -4,11 +4,10 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const app = express()
-random_changes
+
 //const cors = require('cors')
 
 const cors = require('cors')
-main
 
 // middleware
 app.set('view engine', 'jsx')
