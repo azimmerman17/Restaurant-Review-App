@@ -14,60 +14,60 @@ const AddComments = ({ id }) => {
     <Stack gap={2}>
       <h3 className='mb-2'>Add comments</h3>
       <Form method='POST' action={`http://localhost:8080/places/${id}/comment`}>
-      <Stack gap={2}>
-        <Row>
-          <Col>
+        <Stack gap={2}>
+          <Row>
+            <Col>
+              <Form.Group>
+                <Form.Label htmlFor='content' className='text-left'>Comments</Form.Label>
+                  <Form.Control 
+                    id='content' 
+                    name='content' 
+                    type='text'/>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={3}>
+              <Form.Group>
+                <Form.Label htmlFor='author'>Author</Form.Label>
+                  <Form.Control 
+                    id='author' 
+                    name='author' 
+                    type='text'/>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={3}>
+              <Form.Group>
+                <Form.Label htmlFor='stars'>Star Rating</Form.Label>
+                  <Form.Control 
+                    id='stars' 
+                    name='stars' 
+                    type='range'
+                    max={5}
+                    step={0.5}
+                    required/>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={3}>
             <Form.Group>
-              <Form.Label htmlFor='content' className='text-left'>Comments</Form.Label>
-                <Form.Control 
-                  id='content' 
-                  name='content' 
-                  type='text'/>
+              <Form.Label htmlFor='rant'>Rant?</Form.Label>
+              <Form.Check type="checkbox" name='rant' id="rant" />
             </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={3}>
-            <Form.Group>
-              <Form.Label htmlFor='author'>Author</Form.Label>
-                <Form.Control 
-                  id='author' 
-                  name='author' 
-                  type='text'/>
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={3}>
-            <Form.Group>
-              <Form.Label htmlFor='stars'>Star Rating</Form.Label>
-                <Form.Control 
-                  id='stars' 
-                  name='stars' 
-                  type='range'
-                  max={5}
-                  step={0.5}
-                  required/>
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={3}>
-          <Form.Group>
-            <Form.Label htmlFor='rant'>Rant?</Form.Label>
-            <Form.Check type="checkbox" id="rant" />
-          </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={3}>
-            <Form.Control 
-              className='btn btn-primary' 
-              type='submit' 
-              value='Submit'/>
-          </Col>
-        </Row>
-      </Stack>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={3}>
+              <Form.Control 
+                className='btn btn-primary' 
+                type='submit' 
+                value='Submit'/>
+            </Col>
+          </Row>
+        </Stack>
       </Form>
     </Stack>
   )

@@ -13,7 +13,7 @@ router.get('/', async (req,res) => {
     res.status(200).send(places)
   } catch (error) {
     console.log(error)
-
+    res.redirect(`http://localhost:3000/places/Error404`)
   }
 
 })
@@ -32,6 +32,7 @@ router.get('/:id', async (req,res) => {
       res.status(200).send(place)
   } catch (error) {
     console.log(error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   }
 })
 
@@ -43,6 +44,7 @@ router.get('/:id/edit', async (req, res) => {
     res.status(200).send(place)
   } catch (error) {
     console.log(error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   }
 })
 
@@ -60,6 +62,7 @@ router.post('/', (req,res) => {
     res.send('Success')
   } catch (error) {
     console.log(error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   }
 })
 
@@ -67,6 +70,7 @@ router.post('/', (req,res) => {
 router.post('/:id/comment', async (req, res)=> {
   const { id } = req.params
   const { author, rant, content } = req.body
+  console.log(req.body)
   // not required author, content
   if (!author) req.body.author = undefined
   if (!content) req.body.content = undefined
@@ -83,11 +87,11 @@ router.post('/:id/comment', async (req, res)=> {
       place.save()
       .then(() => {
         res.redirect(`http://localhost:3000/places/${id}`)
-        // res.send('Success')
       })
     })
   } catch (error) {
     console.log(error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   }
 })
 
@@ -106,6 +110,7 @@ router.put('/:id', async (req, res) => {
     })
   .catch((error) => {
     console.log(error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   })
 })
 
@@ -120,7 +125,8 @@ router.delete('/:id', async (req, res) => {
     res.status(303).redirect('/places')
   })
   .catch((error) => {
-    console.log('error', error)
+    console.log(error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   })
 })
 
@@ -129,10 +135,11 @@ router.delete('/:placeId/comment/:id', async (req, res) => {
   const { placeId, id } = req.params
   await Comments.findByIdAndDelete(id)
   .then(() => {
-    res.status(303).redirect(`/places/${placeId}`)
+    res.status(303).redirect(`http://localhost:8080/places/${placeId}`)
   })
   .catch((error) => {
     console.log('error', error)
+    res.redirect(`http://localhost:3000/places/Error404`)
   })
 })
 
