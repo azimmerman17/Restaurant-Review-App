@@ -4,12 +4,17 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const app = express()
+random_changes
 //const cors = require('cors')
+
+const cors = require('cors')
+main
 
 // middleware
 app.set('view engine', 'jsx')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 // app.use(methodOveride('_method'))
 
 // controllers and routes
