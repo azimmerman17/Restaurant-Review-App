@@ -6,8 +6,8 @@ import Home from './Components/Home';
 import Error404 from './Components/Error404';
 import Places from './Components/Places';
 import ShowPlace from './Components/ShowPlace';
-import edit_form from './Components/edit';
-import new_form from './Components/new';
+import edit_form from './Components/Edit';
+import new_form from './Components/New';
 
 
 
