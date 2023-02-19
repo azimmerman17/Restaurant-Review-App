@@ -10,7 +10,7 @@ function new_form (data) {
       )
     }
     return (
-        <Def>
+        <div>
           <main>
             <h1>Add a New Place</h1>
             {message}
@@ -46,7 +46,7 @@ function new_form (data) {
               <input className="btn btn-primary" type="submit" value="Add Place" />
             </form>
           </main>
-        </Def>
+        </div>
     )
 }
 

@@ -8,6 +8,11 @@ import Places from './Components/Places';
 import ShowPlace from './Components/ShowPlace';
 import edit_form from './Components/edit';
 
+import new_form from './Components/new';
+
+
+
+
 function App() {
   let [data, setData] = useState({})
   let [link, setLink] = useState('')
@@ -34,9 +39,15 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} /> 
             <Route path='/places' element={<Places setLink={setLink} data={data} />} />
+
+            <Route path='/places/new' element={<new_form />} />
+            <Route path='/places/:id' element={<ShowPlace setLink={setLink} data={data} />} />
+            <Route path='/places/:id/edit' element={<edit_form/>} />
+
             <Route path='/places/new' element={<Home />}/>
             <Route path='/places/:id' element={<ShowPlace setLink={setLink} data={data} />} />
             <Route path='/places/:id/edit' element={<edit_form data={data}/>} />
+
             <Route path='*' element={<Error404 />} />
           </Routes>
         </main>
