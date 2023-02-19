@@ -34,8 +34,9 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main style= {{marginTop: '75px' }}>
-      Restaurant App    
+        <main style= {{marginTop: '75px', marginBottom: '75px' }}>
+          
+          <h1 className='bg-white p-2 shadow rounded text-center '>Restaurant Review App</h1> 
           <Routes>
             <Route exact path='/' element={<Home />} /> 
             <Route path='/places' element={<Places setLink={setLink} data={data} />} />

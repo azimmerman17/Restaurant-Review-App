@@ -12,8 +12,8 @@ const Places = ({ setLink, data }) => {
     places = data.map(place => {
       const { _id } = place
       return (
-        <Col className='m-2 d-flex flex-wrap flex-row' key={_id} sm={5}>
-          <Button href={`${_id}`}>
+        <Col className='m-2 d-flex flex-wrap flex-row p-2' key={_id} sm={5}>
+          <Button className=' p-2 shadow rounded' href={`${_id}`}>
             <PlaceCard place={place} />
           </Button>
         </Col>
@@ -25,7 +25,7 @@ const Places = ({ setLink, data }) => {
 
   return (
     <Container>
-      <Row>
+      <Row className='bg-white p-2 shadow rounded'>
         {data ? places : null}
       </Row>
     </Container>
