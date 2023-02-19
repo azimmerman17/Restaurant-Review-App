@@ -82,8 +82,8 @@ router.post('/:id/comment', async (req, res)=> {
       place.comments.push(comment.id)
       place.save()
       .then(() => {
-        // res.redirect(`/places/${id}`)
-        res.send('Success')
+        res.redirect(`http://localhost:3000/places/${id}`)
+        // res.send('Success')
       })
     })
   } catch (error) {
@@ -105,7 +105,7 @@ router.put('/:id', async (req, res) => {
       res.redirect(`/places/${id}`)
     })
   .catch((error) => {
-    console.log('error', error)
+    console.log(error)
   })
 })
 

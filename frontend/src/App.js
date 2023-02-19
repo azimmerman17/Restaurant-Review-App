@@ -1,11 +1,30 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
+import { useState, useEffect } from 'react';
 import './App.css';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
+<<<<<<< HEAD
 import Error404 from './Components/Error404';
+=======
+import Places from './Components/Places';
+import ShowPlace from './Components/ShowPlace';
+>>>>>>> 0e676349e874de68186edde2ced549f064753b4c
 
 function App() {
+  let [data, setData] = useState({})
+  let [link, setLink] = useState('')
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const API_URL = 'http://localhost:8080/places'
+        const url = API_URL + link
+        const response = await fetch(url)
+        const resData = await response.json()
+        setData(resData)
+    }
+      fetchData()
+  },[link])
+
   return (
     <div className="App">
       <Router>
@@ -16,13 +35,12 @@ function App() {
       Restaurant App    
           <Routes>
             <Route exact path='/' element={<Home />} /> 
-            {/* <Route path='/places' element={<Places />} /> */}
+            <Route path='/places' element={<Places setLink={setLink} data={data} />} />
             {/* <Route path 'places/new' element={<PlacesForm />} /> */}
-            {/* <Route path='/places/:id' element={<Show />} /> */}
+            <Route path='/places/:id' element={<ShowPlace setLink={setLink} data={data} />} />
             {/* <Route path='/places/:id/edit' element={<PlacesForm/>} /> */}
             <Route path='*' element={<Error404 />} />
           </Routes>
-
         </main>
       </Router>
 
