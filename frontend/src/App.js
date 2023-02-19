@@ -6,9 +6,9 @@ import Home from './Components/Home';
 import Error404 from './Components/Error404';
 import Places from './Components/Places';
 import ShowPlace from './Components/ShowPlace';
-import edit_form from './Components/edit';
+import Edit_form from './Components/edit';
 
-import new_form from './Components/new';
+import New_form from './Components/new';
 
 
 
@@ -41,9 +41,9 @@ function App() {
             <Route exact path='/' element={<Home />} /> 
             <Route path='/places' element={<Places setLink={setLink} data={data} />} />
 
-            <Route path='/places/new' element={<new_form />} />
+            <Route path='/places/new' element={<New_form />} />
             <Route path='/places/:id' element={<ShowPlace setLink={setLink} data={data} />} />
-            <Route path='/places/:id/edit' element={<edit_form/>} />
+            <Route path='/places/:id/edit' element={<Edit_form setLink={setLink} data={data} />} />
 
             <Route path='*' element={<Error404 />} />
           </Routes>

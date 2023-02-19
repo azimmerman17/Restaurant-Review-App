@@ -1,37 +1,43 @@
-const React = require('react')
+import { useParams } from 'react-router-dom'
 
-function edit_form ({ data }) {
+function Edit_form ({ data, setLink }) {
+    const { id } = useParams()
+    setLink(`/${id}/edit`)
+
+    const { city, cuisines, founded, name, pic, state } = data
+    console.log('data', data)
+
     return (
         <div>
             <h1>Edit Place</h1>
-            <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
+            <form method="POST" action={`http://localhost:8080/places/${id}?_method=PUT`}>
                 <div className="row">
                     <div className="form-group col-sm-6">
                         <label htmlFor="name">Place Name</label>
-                        <input className="form-control" id="name" name="name" defaultValue={data.place.name} required />
+                        <input className="form-control" id="name" name="name" defaultValue={name} required />
                     </div>
                     <div className="form-group col-sm-6">
                         <label htmlFor="image">Place Image</label>
-                        <input className="form-control" id="image" name="image" defaultValue={data.place.image} />
+                        <input className="form-control" id="image" name="image" defaultValue={pic} />
                     </div>
                 </div>
                 <div className="row">
                     <div className="form-group col-sm-4">
                         <label htmlFor="city">City</label>
-                        <input className="form-control" id="city" name="city" defaultValue={data.place.city} />
+                        <input className="form-control" id="city" name="city" defaultValue={city} />
                     </div>
                     <div className="form-group col-sm-4">
                         <label htmlFor="state">State</label>
-                        <input className="form-control" id="state" name="state" defaultValue={data.place.state} />
+                        <input className="form-control" id="state" name="state" defaultValue={state} />
                     </div>
                     <div className="form-group col-sm-4">
                         <label htmlFor="founded">Founding Year</label>
-                        <input className="form-control" id="founded" name="founded" defaultValue={data.place.founded} />
+                        <input className="form-control" id="founded" name="founded" defaultValue={founded} />
                     </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor="cuisines">Cuisines</label>
-                    <input className="form-control" id="cuisines" name="cuisines" defaultValue={data.place.cuisines} required />
+                    <input className="form-control" id="cuisines" name="cuisines" defaultValue={cuisines} required />
                 </div>
                 <input className="btn btn-primary" type="submit" defaultValue="Update Place" />
             </form>
@@ -39,4 +45,4 @@ function edit_form ({ data }) {
     )
 }
 
-export default edit_form
+export default Edit_form
