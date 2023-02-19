@@ -1,6 +1,6 @@
 const React = require('react')
 
-function new_page (data) {
+function new_form (data) {
     let message = ''
     if (data.message) {
       message = (
@@ -50,4 +50,4 @@ function new_page (data) {
     )
 }
 
-export default new_page
+export default new_form
