@@ -2,7 +2,12 @@ const React = require('react')
 
 function edit_form ({ data }) {
     return (
+
+        <div>
+          <main>
+
           <div>
+
             <h1>Edit Place</h1>
             <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
                 <div className="row">
@@ -35,7 +40,12 @@ function edit_form ({ data }) {
                 </div>
                 <input className="btn btn-primary" type="submit" defaultValue="Update Place" />
             </form>
+
+          </main>
+        </div>
+
           </div>
+
     )
 }
 

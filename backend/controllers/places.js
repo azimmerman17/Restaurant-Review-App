@@ -20,7 +20,7 @@ router.get('/', async (req,res) => {
 
 // Get - create a new place  ??? Do I need ??? - Delete Later
 router.get('/new', (req,res) => {
-
+  res.render('places/new')
 })
 
 // Get Place by ID
