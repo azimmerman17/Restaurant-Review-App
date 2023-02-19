@@ -32,19 +32,17 @@ const ShowPlace = ({ setLink, data }) => {
     commentsArea = comments.map(c => {
       const { rant, content, author, stars, _id } = c
       return (  
-        <Stack gap={1} key={_id}>
-          <Col className='border' sm={4} key={_id}>
-              <h6>{rant ? 'Rant 😡' : 'Rave 😀'}</h6>
-              <h6>{content}</h6>
-              <h6>
-                  <strong>- {author}</strong>
-              </h6>
-              <h6 >Rating: {stars}</h6>
-              <form method='POST' action={`http://localhost:8080/places/${id}/comment/${c._id}?_method=DELETE`}>
-                  <button className='btn btn-danger bi bi-trash' type='submit'><BsTrash /></button>
-              </form>
-          </Col>
-        </Stack>    
+            <Col className='border bg-white m-2 p-3 shadow rounded' sm={5} key={_id}>
+                <h6>{rant ? 'Rant 😡' : 'Rave 😀'}</h6>
+                <h6>{content}</h6>
+                <h6>
+                    <strong>- {author}</strong>
+                </h6>
+                <h6 >Rating: {stars}</h6>
+                <form method='POST' action={`http://localhost:8080/places/${id}/comment/${c._id}?_method=DELETE`}>
+                    <button className='btn btn-danger bi bi-trash' type='submit'><BsTrash /></button>
+                </form>
+            </Col>
       )
     })
     
@@ -53,14 +51,14 @@ const ShowPlace = ({ setLink, data }) => {
   }
 
   return (
-    <Container className='my-5'>
-      <Row className='my-5'>
+    <Container>
+      <Row className='border bg-white m-1 p-1 shadow rounded'>
         <Col>
-          <img src={pic} alt={name} />
+          <img className='shadow rounded' src={pic} alt={name} />
         </Col>
         <Col>
         <Stack gap={4}>
-          <Row>
+          <Row className="mt-3">
             <h2 className='text-center'>{name}</h2>
           </Row>
           <Row> 
@@ -92,7 +90,7 @@ const ShowPlace = ({ setLink, data }) => {
       <hr/>
       <Row>
         <h4 className='mb-2'>Comments</h4>
-        <Row>
+        <Row >
           {comments ? commentsArea : <p>No Comments</p>}
         </Row>
       </Row>
