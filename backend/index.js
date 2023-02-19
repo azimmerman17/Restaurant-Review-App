@@ -1,4 +1,4 @@
-//  Moduels and routes
+//  Modules and routes
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
