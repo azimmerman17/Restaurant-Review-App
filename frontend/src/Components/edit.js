@@ -7,7 +7,7 @@ function edit_form ({ data }) {
         <div>
           <main>
 
-          <div>
+          
 
             <h1>Edit Place</h1>
             <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
@@ -45,7 +45,7 @@ function edit_form ({ data }) {
           </main>
         </div>
 
-          </div>
+        
 
     )
 }
