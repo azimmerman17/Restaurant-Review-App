@@ -13,7 +13,7 @@ const AddComments = ({ id }) => {
   return (
     <Stack gap={2}>
       <h3 className='mb-2'>Add comments</h3>
-      <Form className='border bg-white m-1 p-2 shadow rounded' method='POST' action={`http://localhost:8080/places/${id}/comment`}>
+      <Form method='POST' action={`http://localhost:8080/places/${id}/comment`} className='border bg-white p-3 shadow rounded'>
         <Stack gap={2}>
           <Row>
             <Col>
